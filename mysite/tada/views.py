@@ -17,3 +17,7 @@ def detail(request, tada_id):
 def results(request, tada_id):
     response = "You're looking at the results of tada %s."
     return HttpResponse(response % tada_id)
+
+def modules(request, tada_id):
+    tada = get_object_or_404(Tada, pk=tada_id)
+    return render(request, 'tada/modules.html', {'tada': tada})
