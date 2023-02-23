@@ -1,9 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from .models import Tada
-
-
+from .models import Tada, Module
 
 def index(request):
     latest_list = Tada.objects.order_by('-pub_date')[:5]
@@ -21,3 +19,8 @@ def results(request, tada_id):
 def modules(request, tada_id):
     tada = get_object_or_404(Tada, pk=tada_id)
     return render(request, 'tada/modules.html', {'tada': tada})
+
+def module(request, tada_id, module_id):
+    tada = get_object_or_404(Tada, pk=tada_id)
+    module = get_object_or_404(Module, pk=module_id)
+    return render(request, 'tada/module.html', {'tada': tada, 'module': module})

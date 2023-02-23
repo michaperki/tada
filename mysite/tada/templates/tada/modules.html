@@ -7,11 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Modules</h1>
+    <h1>{{ tada.tada_text }}</h1>
+    <p>{{ tada.pub_date }}</p>
+    <p>{{ tada.id }}</p>
+    <p>{{ tada.choice_set.all }}</p>
+
+    <h2>Modules</h2>
     <p>Here are the modules:</p>
     <ul>
-        {% for module in modules %}
-            <li><a href="{% url 'tada:module_detail' module.id %}">{{ module.module_name }}</a></li>
+        {% for module in tada.module_set.all %}
+            <li><a href="{% url 'tada:module' tada.id module.id %}">{{ module.module_name }}</a></li>
         {% endfor %}
     </ul>
 </body>

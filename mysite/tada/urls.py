@@ -12,4 +12,7 @@ urlpatterns = [
     path('<int:tada_id>/results/', views.results, name='results'),
     # ex: /tada/5/modules/
     path('<int:tada_id>/modules/', views.modules, name='modules'),
+    # ex: /tada/5/modules/2
+    path('<int:tada_id>/module/<int:module_id>', views.module, name='module'),
+    
 ]
