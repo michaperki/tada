@@ -11,8 +11,14 @@
     <p>{{ tada.pub_date }}</p>
     <p>{{ tada.id }}</p>
 
-    <h2>Modules</h2>
-    <a href="{% url 'tada:modules' tada.id %}">Modules</a>
+    <p> this page might display the health of the TADA </p>
 
-</body>
+    <h2>SETTINGS</h2>
+    <p>Here are the settings:</p>
+    <ul>
+        {% for setting in tada.setting_set.all %}
+        <li><a href="{% url 'tada:setting' tada.id setting.id %}">{{ setting.setting_name }}</a></li>
+        {% endfor %}
+        <li><a href="{% url 'tada:modules' tada.id %}">All Modules</a></li>
+    </body>
 </html>
